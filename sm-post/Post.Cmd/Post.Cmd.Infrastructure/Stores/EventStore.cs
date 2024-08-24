@@ -76,6 +76,24 @@ namespace Post.Cmd.Infrastructure.Stores
             }
 
             var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC");
+
+            try
+            {
+                foreach (var eventModel in eventModels)
+                {
+                    await _eventStoreRepository.SaveAsync(eventModel);
+                    await _eventProducer.ProduceAsync(topic, eventModel.EventData);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to save events to MongoDB", ex);
+            }
+        }
+
+        public async Task SaveEventWithTransactionAsync(List<EventModel> eventModels)
+        {
+            var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC");
             using (var session = await _mongoClient.StartSessionAsync())
             {
                 session.StartTransaction();

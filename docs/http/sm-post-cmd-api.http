@@ -1,0 +1,8 @@
+POST http://localhost:5010/api/v1/newPost
+Content-Type: application/json
+
+{
+    "author": "Anas Mhaish",
+    "message": "KAFKA with Microservices architecture is awesome"
+    
+}
