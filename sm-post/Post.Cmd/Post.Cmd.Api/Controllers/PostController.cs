@@ -35,7 +35,7 @@ namespace Post.Cmd.Api.Controllers
 
                 return StatusCode(
                     StatusCodes.Status201Created,
-                    new NewPostResponse { Message = "Post created successfully", }
+                    new NewPostResponse { Message = "Post created successfully", Id = id }
                 );
             }
             catch (InvalidOperationException ex)
