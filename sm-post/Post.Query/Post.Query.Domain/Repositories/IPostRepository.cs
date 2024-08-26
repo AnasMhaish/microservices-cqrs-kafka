@@ -10,7 +10,7 @@ namespace Post.Query.Domain.Repositories
         Task<PostEntity> GetByIdAsync(Guid postId);
         Task<IList<PostEntity>> GetAllAsync();
         Task<IList<PostEntity>> GetByAuthorAsync(string author);
-        Task<IList<PostEntity>> ListWithLikesAsync(int numberOfLikes);
-        Task<IList<PostEntity>> ListWithCommentsAsync();
+        Task<IList<PostEntity>> GetWithLikesAsync(int numberOfLikes);
+        Task<IList<PostEntity>> GetWithCommentsAsync();
     }
 }

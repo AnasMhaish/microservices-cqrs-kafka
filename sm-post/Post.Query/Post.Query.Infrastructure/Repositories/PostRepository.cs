@@ -67,7 +67,7 @@ namespace Post.Query.Infrastructure.Repositories
                 .FirstOrDefaultAsync(p => p.PostId == postId);
         }
 
-        public async Task<IList<PostEntity>> ListWithCommentsAsync()
+        public async Task<IList<PostEntity>> GetWithCommentsAsync()
         {
             using var context = _contextFactory.CreateDbContext();
             return await context
@@ -78,7 +78,7 @@ namespace Post.Query.Infrastructure.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IList<PostEntity>> ListWithLikesAsync(int numberOfLikes)
+        public async Task<IList<PostEntity>> GetWithLikesAsync(int numberOfLikes)
         {
             using var context = _contextFactory.CreateDbContext();
             return await context
